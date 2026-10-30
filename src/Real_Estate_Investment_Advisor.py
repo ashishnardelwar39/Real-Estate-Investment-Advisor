@@ -15,8 +15,7 @@ from sklearn.model_selection import train_test_split
 # In[6]:
 
 
-df=pd.read_csv("D:/Documents/Ashish Nardelwar/My Project/india_housing_prices.csv")
-print(df)
+
 
 
 # In[9]:

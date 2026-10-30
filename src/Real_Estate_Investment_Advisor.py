@@ -1282,7 +1282,7 @@ joblib.dump(best_regressor, "models/future_price_regressor.pkl")
 # In[ ]:
 
 
-mlflow ui --backend-store-uri sqlite:///mlflow.db
+
 
 
 # In[ ]:

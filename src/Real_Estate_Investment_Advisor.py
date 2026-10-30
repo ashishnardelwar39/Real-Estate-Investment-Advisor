@@ -23,16 +23,12 @@ from sklearn.model_selection import train_test_split
 
 from pathlib import Path
 
-BASE_DIR = Path("D:/Documents/Ashish Nardelwar/My Project/src/Real_Estate_Investment_Advisor.py").resolve().parent.parent
-df = pd.read_csv(BASE_DIR / "india_housing_prices.csv")
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # In[11]:
 
 
-from pathlib import Path
-
-print(Path("D:/Documents/Ashish Nardelwar/My Project/src/Real_Estate_Investment_Advisor.py"))
 
 
 # In[9]:

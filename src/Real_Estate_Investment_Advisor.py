@@ -1278,8 +1278,6 @@ joblib.dump(best_regressor, "models/future_price_regressor.pkl")
 # In[ ]:
 
 
-python src/03_train.py
-
 
 # In[ ]:
 

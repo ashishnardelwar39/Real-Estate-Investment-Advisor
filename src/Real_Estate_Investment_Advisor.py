@@ -681,7 +681,52 @@ X_train, X_test, y_train, y_test = train_test_split(
     test_size=0.2,
     random_state=42
 )
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier
 
+# Separate features and target
+X = df.drop(columns=["Good_Investment"])
+y = df["Good_Investment"]
+
+# Remove non-predictive ID column if present
+X = X.drop(columns=["ID"], errors="ignore")
+
+# Identify column types
+num_cols = X.select_dtypes(include=["number"]).columns.tolist()
+cat_cols = X.select_dtypes(
+    include=["object", "string", "category", "bool"]
+).columns.tolist()
+
+# Preprocess numeric and categorical columns
+preprocessor = ColumnTransformer([
+    ("num", SimpleImputer(strategy="median"), num_cols),
+    ("cat", Pipeline([
+        ("imputer", SimpleImputer(strategy="most_frequent")),
+        ("encoder", OneHotEncoder(handle_unknown="ignore"))
+    ]), cat_cols)
+])
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# Build and train model
+model = Pipeline([
+    ("preprocessor", preprocessor),
+    ("classifier", RandomForestClassifier(
+        n_estimators=100, random_state=42
+    ))
+])
+
+model.fit(X_train, y_train)
+
+st.success("Random Forest model trained successfully!")
 
 # In[57]:
 
@@ -731,7 +776,11 @@ model = RandomForestClassifier(
     n_estimators=100,
     random_state=42
 )
+st.write("Training data types:")
+st.write(X_train.dtypes)
 
+st.write("Text columns:")
+st.write(X_train.select_dtypes(include=["object", "string"]).columns.tolist())
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)

@@ -34,7 +34,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # In[9]:
 
 
-df.head()
+from pathlib import Path
+import pandas as pd
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+csv_path = BASE_DIR / "india_housing_prices.csv"
+
+df = pd.read_csv(csv_path)
+
+st.write(df.head())
 
 
 # In[10]:

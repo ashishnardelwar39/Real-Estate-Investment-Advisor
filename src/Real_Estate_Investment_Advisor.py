@@ -719,7 +719,6 @@ print("Testing data:", X_test.shape)
 # In[62]:
 
 
-get_ipython().run_line_magic('pip', 'install pandas scikit-learn xgboost mlflow joblib')
 
 
 # In[63]:
@@ -743,7 +742,7 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 # In[ ]:
 
 
-get_ipython().run_line_magic('pip', 'install pandas')
+
 
 
 # In[ ]:

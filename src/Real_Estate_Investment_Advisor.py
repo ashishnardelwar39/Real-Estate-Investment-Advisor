@@ -10,6 +10,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
+import streamlit as st
 
 
 # In[6]:
@@ -22,8 +23,15 @@ from sklearn.model_selection import train_test_split
 
 
 from pathlib import Path
-
+import streamlit as st
+import pandas as pd
 BASE_DIR = Path(__file__).resolve().parent.parent
+csv_path = BASE_DIR / "india_housing_prices.csv"
+
+df = pd.read_csv(csv_path)
+
+st.write(df.head())
+
 
 
 # In[11]:
@@ -33,16 +41,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # In[9]:
 
-
-from pathlib import Path
-import pandas as pd
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-csv_path = BASE_DIR / "india_housing_prices.csv"
-
-df = pd.read_csv(csv_path)
-
-st.write(df.head())
 
 
 # In[10]:

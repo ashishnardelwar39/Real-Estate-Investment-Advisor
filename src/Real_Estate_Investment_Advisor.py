@@ -1096,6 +1096,7 @@ joblib.dump(
     best_classifier,
     "models/good_investment_classifier.pkl"
 )
+prediction = model.predict(input_df)
 
 joblib.dump(
     best_regressor,

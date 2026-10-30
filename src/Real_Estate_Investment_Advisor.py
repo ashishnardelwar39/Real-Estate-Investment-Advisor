@@ -22,6 +22,23 @@ print(df)
 # In[9]:
 
 
+from pathlib import Path
+
+BASE_DIR = Path("D:/Documents/Ashish Nardelwar/My Project/src/Real_Estate_Investment_Advisor.py").resolve().parent.parent
+df = pd.read_csv(BASE_DIR / "india_housing_prices.csv")
+
+
+# In[11]:
+
+
+from pathlib import Path
+
+print(Path("D:/Documents/Ashish Nardelwar/My Project/src/Real_Estate_Investment_Advisor.py"))
+
+
+# In[9]:
+
+
 df.head()
 
 
@@ -1278,11 +1295,13 @@ joblib.dump(best_regressor, "models/future_price_regressor.pkl")
 # In[ ]:
 
 
+python src/03_train.py
+
 
 # In[ ]:
 
 
-
+mlflow ui --backend-store-uri sqlite:///mlflow.db
 
 
 # In[ ]:

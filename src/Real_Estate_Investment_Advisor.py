@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[1]:
 
 
 import pandas as pd
@@ -12,10 +12,10 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 
 
-# In[8]:
+# In[6]:
 
 
-df=pd.read_csv("C:/Users/HP/Downloads/india_housing_prices.csv")
+df=pd.read_csv("D:/Documents/Ashish Nardelwar/My Project/india_housing_prices.csv")
 print(df)
 
 
@@ -701,6 +701,7 @@ print("Testing data:", X_test.shape)
 # In[62]:
 
 
+get_ipython().run_line_magic('pip', 'install pandas scikit-learn xgboost mlflow joblib')
 
 
 # In[63]:
@@ -724,7 +725,7 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 # In[ ]:
 
 
-
+get_ipython().run_line_magic('pip', 'install pandas')
 
 
 # In[ ]:
@@ -1277,13 +1278,13 @@ joblib.dump(best_regressor, "models/future_price_regressor.pkl")
 # In[ ]:
 
 
-
+python src/03_train.py
 
 
 # In[ ]:
 
 
-
+mlflow ui --backend-store-uri sqlite:///mlflow.db
 
 
 # In[ ]:
@@ -1474,7 +1475,24 @@ joblib.dump(
     "models/future_price_regressor.pkl"
 )
 
-print("Models saved successfully!")
+print("Both Models saved successfully!")
+
+
+# In[1]:
+
+
+import os
+
+print(os.listdir("models"))
+
+
+# In[2]:
+
+
+import os
+
+print(os.getcwd())
+print(os.listdir("models"))
 
 
 # In[ ]:
